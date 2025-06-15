@@ -1,0 +1,1 @@
+const int NUMBER_OF_ELEMENTS = 10'000'000;
