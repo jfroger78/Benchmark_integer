@@ -1,0 +1,458 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake: configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S",
+                ".",
+                "-B",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake: build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "CMake: configure",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Folders creation",
+            "type": "shell",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "${workspaceFolder}/massif_files",
+                "${workspaceFolder}/time_files"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [],
+        },
+        {
+            "label": "Files creation",
+            "type": "shell",
+            "command": "touch",
+            "args": [
+                "${workspaceFolder}/massif_files/int.out",
+                "${workspaceFolder}/massif_files/int8.out",
+                "${workspaceFolder}/massif_files/int16.out",
+                "${workspaceFolder}/massif_files/int32.out",
+                "${workspaceFolder}/massif_files/int64.out",
+                "${workspaceFolder}/massif_files/uint.out",
+                "${workspaceFolder}/massif_files/uint8.out",
+                "${workspaceFolder}/massif_files/uint16.out",
+                "${workspaceFolder}/massif_files/uint32.out",
+                "${workspaceFolder}/massif_files/uint64.out",
+                "${workspaceFolder}/time_files/int.out",
+                "${workspaceFolder}/time_files/int8.out",
+                "${workspaceFolder}/time_files/int16.out",
+                "${workspaceFolder}/time_files/int32.out",
+                "${workspaceFolder}/time_files/int64.out",
+                "${workspaceFolder}/time_files/uint.out",
+                "${workspaceFolder}/time_files/uint8.out",
+                "${workspaceFolder}/time_files/uint16.out",
+                "${workspaceFolder}/time_files/uint32.out",
+                "${workspaceFolder}/time_files/uint64.out"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "dependsOn": "Folders creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (int)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/int.out",
+                "${workspaceFolder}/build/main_int"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the int version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (int8)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/int8.out",
+                "${workspaceFolder}/build/main_int8"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the int8 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (int16)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/int16.out",
+                "${workspaceFolder}/build/main_int16"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the int16 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (int32)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/int32.out",
+                "${workspaceFolder}/build/main_int32"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the int32 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (int64)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/int64.out",
+                "${workspaceFolder}/build/main_int64"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the int64 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (uint)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/uint.out",
+                "${workspaceFolder}/build/main_uint"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the uint version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (uint8)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/uint8.out",
+                "${workspaceFolder}/build/main_uint8"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the uint8 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (uint16)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/uint16.out",
+                "${workspaceFolder}/build/main_uint16"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the uint16 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (uint32)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/uint32.out",
+                "${workspaceFolder}/build/main_uint32"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the uint32 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Valgrind Massif (uint64)",
+            "type": "shell",
+            "command": "valgrind",
+            "args": [
+                "--tool=massif",
+                "--massif-out-file=${workspaceFolder}/massif_files/uint64.out",
+                "${workspaceFolder}/build/main_uint64"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "${env:PATH}"
+                }
+            },
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Run Valgrind Massif on the uint64 version",
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (int)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_int",
+                ">",
+                "${workspaceFolder}/time_files/int.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (int8)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_int8",
+                ">",
+                "${workspaceFolder}/time_files/int8.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (int16)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_int16",
+                ">",
+                "${workspaceFolder}/time_files/int16.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (int32)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_int32",
+                ">",
+                "${workspaceFolder}/time_files/int32.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (int64)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_int64",
+                ">",
+                "${workspaceFolder}/time_files/int64.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (uint)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_uint",
+                ">",
+                "${workspaceFolder}/time_files/uint.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (uint8)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_uint8",
+                ">",
+                "${workspaceFolder}/time_files/uint8.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (uint16)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_uint16",
+                ">",
+                "${workspaceFolder}/time_files/uint16.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (uint32)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_uint32",
+                ">",
+                "${workspaceFolder}/time_files/uint32.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run with Time (uint64)",
+            "type": "shell",
+            "command": "/usr/bin/time",
+            "args": [
+                "-v",
+                "${workspaceFolder}/build/main_uint64",
+                ">",
+                "${workspaceFolder}/time_files/uint64.out",
+                "2>&1"
+            ],
+            "problemMatcher": [],
+            "dependsOn": "Files creation"
+        },
+        {
+            "label": "Run Valgrind Massif for all",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "CMake: configure",
+                "CMake: build",
+                "Run with Time (int)",
+                "Run with Time (int8)",
+                "Run with Time (int16)",
+                "Run with Time (int32)",
+                "Run with Time (int64)",
+                "Run with Time (uint)",
+                "Run with Time (uint8)",
+                "Run with Time (uint16)",
+                "Run with Time (uint32)",
+                "Run with Time (uint64)",
+                "Run with Valgrind Massif (int)",
+                "Run with Valgrind Massif (int8)",
+                "Run with Valgrind Massif (int16)",
+                "Run with Valgrind Massif (int32)",
+                "Run with Valgrind Massif (int64)",
+                "Run with Valgrind Massif (uint)",
+                "Run with Valgrind Massif (uint8)",
+                "Run with Valgrind Massif (uint16)",
+                "Run with Valgrind Massif (uint32)",
+                "Run with Valgrind Massif (uint64)"
+            ]
+        }
+    ]
+}
